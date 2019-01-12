@@ -14,5 +14,7 @@ namespace ModasAdmin.Controllers
         }
 
         public ViewResult Index() => View(userManager.Users);
+
+        public ViewResult Create() => View();
     }
 }
