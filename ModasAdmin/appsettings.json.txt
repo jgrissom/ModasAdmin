@@ -1,0 +1,8 @@
+﻿{
+{
+  "Data": {
+    "ModasIdentity": {
+      "ConnectionString": "Server=bitsql.wctc.edu;Database=XXXIdentity;User ID=YYY;Password=ZZZ"
+    }
+  }
+}
