@@ -12,6 +12,7 @@
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 
   <ItemGroup>
