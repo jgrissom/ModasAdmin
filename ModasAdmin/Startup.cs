@@ -21,9 +21,16 @@ namespace ModasAdmin
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-                services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:ModasIdentity:ConnectionString"]));
-                services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
-                services.AddMvc();
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["Data:ModasIdentity:ConnectionString"]));
+            services.AddIdentity<AppUser, IdentityRole>(opts =>
+            {
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
