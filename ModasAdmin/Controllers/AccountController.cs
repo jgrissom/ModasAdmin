@@ -6,7 +6,7 @@ using ModasAdmin.Models;
 
 namespace ModasAdmin.Controllers
 {
-    [Authorize]
+    //[Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private UserManager<AppUser> userManager;
@@ -45,6 +45,19 @@ namespace ModasAdmin.Controllers
                 ModelState.AddModelError(nameof(LoginModel.Email), "Invalid user or password");
             }
             return View(details);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public  IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

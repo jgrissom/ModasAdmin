@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ModasAdmin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
             return View();
